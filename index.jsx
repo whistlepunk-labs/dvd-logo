@@ -7,14 +7,10 @@ function move() {
   let height = 100;
 
   const angle = Math.random() * 2 * Math.PI;
-  const speed = 1;
+  const speed = 0.5;
   velocity = [Math.cos(angle) * speed, Math.sin(angle) * speed];
 
-  setInterval(update, 50);
-
-  function update() {
-    window.requestAnimationFrame(frame);
-  }
+  window.requestAnimationFrame(frame);
 
   function frame() {
     if (velocity[0] > 0 && coords[0] > width) {
@@ -33,6 +29,8 @@ function move() {
     coords[1] = coords[1] + velocity[1];
     elem.style.left = coords[0] + "vw";
     elem.style.top = coords[1] + "vh";
+
+    window.requestAnimationFrame(frame);
   }
 }
 
